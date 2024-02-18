@@ -20,19 +20,26 @@ function makePixels(gridSize){
     grid.innerHTML = null
     const cssRules = `
         background-color: white;
-        border: 0.1px solid black;    
+          
         `
     for (let index = 1; index <=gridSize*gridSize; index++) {
         grid.innerHTML += "<div class='pixel'></div>"
     }
     document.querySelectorAll('.pixel').forEach((el) => {
-        el.setAttribute('style',cssRules)  
+        el.setAttribute('style',cssRules)
+        el.classList.add("toggleGrid")  
     })
 }
 
-function handleDrawing(){
+function handleDrawing(color){
     function draw(){
-        const cssRules = `background-color: black;`
+        var cssRules = ``
+        if(color === 'rainbow'){
+            cssRules = `background-color: ${getRandomColor()};`
+        }
+        else {
+            cssRules = `background-color: ${color};`
+        }
         this.setAttribute('style',cssRules)
     }
     function stopDrawing(){
@@ -54,21 +61,53 @@ function handleDrawing(){
 function clear(){
     document.querySelector(".clear").addEventListener("click", function(){
         const cssRules = `background-color: white;
-        border: 0.1px solid black;`
+        `
         document.querySelectorAll('.pixel').forEach((el) => {
             el.setAttribute('style',cssRules)  
         })
     })
 }
 
+function toggleGrid(){
+    document.querySelectorAll('.pixel').forEach((el) => {
+        el.classList.toggle("toggleGrid") 
+    })
+}
+
+
 document.querySelector(".gridsize").addEventListener('click', function(){
     var size = document.getElementById("gridsize").value;
     if (size === '') size = 16
     makeGrid(size)
   });
+ 
+document.querySelector(".gridStatus").addEventListener("click", function(){
+    toggleGrid()
+})
+
+document.querySelector(".eraser").addEventListener("click", function(){
+    handleDrawing('white')
+})
+
+document.querySelector(".pencil").addEventListener("click", function(){
+    handleDrawing('black')
+})
+
+document.querySelector(".rainbow").addEventListener("click", function(){
+    handleDrawing('rainbow')
+})
+
+document.querySelector("#favcolor").addEventListener("input", function(event){
+    handleDrawing(event.target.value)
+})
+
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256); 
+    const g = Math.floor(Math.random() * 256); 
+    const b = Math.floor(Math.random() * 256); 
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
 makeGrid(16)
-handleDrawing()
+handleDrawing('black')
 clear()
-
-
