@@ -16,8 +16,9 @@ footer{
     justify-content: center;
     align-items: center;
     background-color: FB88B4;
-    height: 30px;
+    height: 51px;
     font-weight: bold;
+    gap: 20px;
 }
 .container{
     display: flex;
@@ -88,3 +89,34 @@ transition: 0s
 .toggleGrid{
     border: 0.1px solid black;
 }
+
+input[type="color"] {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    outline: none;
+    /* Set the background color to the value of the input */
+    background-color: var(--color);
+}
+
+.colorPalette{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer>a>img{
+    height: 30px;
+    width: 30px;
+}
+footer>a>img:hover{
+    height: 40px;
+    width: 40px;
+    transition: all 0.7s
+}
+
+.pressed {
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+    opacity: 0.6;
+  }

@@ -2,6 +2,9 @@
 var grid = document.querySelector(".grid")
 
 function makeGrid(grid_size){ 
+    if(grid_size>30){
+        alert("Website will respond slowly when grid size is greater than 30")
+    }
     const cssRules = `
         padding: 10px;
         display: grid;
@@ -85,20 +88,37 @@ document.querySelector(".gridStatus").addEventListener("click", function(){
     toggleGrid()
 })
 
-document.querySelector(".eraser").addEventListener("click", function(){
+var eraser = document.querySelector(".eraser")
+eraser.addEventListener("click", function(){
     handleDrawing('white')
+    eraser.classList.add('pressed')
+    pencil.classList.remove('pressed')
+    rainbow.classList.remove('pressed')
 })
 
-document.querySelector(".pencil").addEventListener("click", function(){
+var pencil = document.querySelector(".pencil")
+pencil.addEventListener("click", function(){
     handleDrawing('black')
+    pencil.classList.add('pressed')
+    rainbow.classList.remove('pressed')
+    eraser.classList.remove('pressed')
 })
 
-document.querySelector(".rainbow").addEventListener("click", function(){
+var rainbow = document.querySelector(".rainbow")
+
+rainbow.addEventListener("click", function(){
     handleDrawing('rainbow')
+    rainbow.classList.add('pressed')
+    pencil.classList.remove('pressed')
+    eraser.classList.remove('pressed')
 })
 
 document.querySelector("#favcolor").addEventListener("input", function(event){
     handleDrawing(event.target.value)
+    document.documentElement.style.setProperty('--color', event.target.value);
+    rainbow.classList.remove('pressed')
+    pencil.classList.remove('pressed')
+    eraser.classList.remove('pressed')
 })
 
 function getRandomColor() {
