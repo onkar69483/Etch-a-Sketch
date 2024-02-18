@@ -1,6 +1,6 @@
 # Etch-a-Sketch Web Application
 
-![Etch-a-Sketch Preview](./assets/images/preview.png)
+[![Etch-a-Sketch Preview](./assets/images/preview.png)](https://onkar69483.github.io/Etch-a-Sketch/)
 
 Visit -> [Etch-a-Sketch](https://onkar69483.github.io/Etch-a-Sketch/).
 
