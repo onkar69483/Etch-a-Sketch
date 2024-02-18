@@ -1,6 +1,7 @@
 body{
     display: flex;
     min-height: 97vh;
+    min-width: fit-content;
     flex-direction: column;
     justify-content: space-between;
     font-family: "Kode Mono", monospace;
@@ -26,6 +27,7 @@ footer{
 }
 
 .menu{
+    min-width: fit-content;
     background-color: F9F07A;
     padding: 20px;
     border-radius: 10px;
